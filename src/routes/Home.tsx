@@ -1,36 +1,29 @@
-import {useState} from "react";
-import viteLogo from "../assets/vite.svg";
-import reactLogo from "../assets/react.svg";
-import {HomeRouteLoaderData} from "../providers/loaders/homeLoader.ts";
+import {useEffect, useState} from "react";
+import {categoriesModelData, HomeRouteLoaderData, productsModelData} from "../providers/loaders/homeLoader.ts";
 import {useLoaderData} from "react-router-dom";
+import {buildProductsCard} from "../common/mockTools.ts";
+import Products from "../components/products/Products.tsx";
 
 function Home() {
   const data = useLoaderData() as HomeRouteLoaderData;
-  const [count, setCount] = useState(0);
-  console.log(data);
+  const [categories, setCategories] = useState<categoriesModelData[]>([]);
+  const [products, setProducts] = useState<productsModelData[]>([]);
+  useEffect(() => {
+    if (categories.length === 0 && data.categories.length > 0) {
+      setCategories(data.categories);
+    }
+    if (products.length === 0 && data.categories.length > 0 && data.products.length > 0) {
+      setProducts(buildProductsCard(data.categories, data.products));
+    }
+  }, [
+    products,
+    setProducts,
+    categories,
+    setCategories,
+    data]);
 
   return (<>
-
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo"/>
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo"/>
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Products items={products} categories={categories.map(c => c.name)}/>
     </>
   )
 }

@@ -1,7 +1,7 @@
 import {defer} from "react-router-dom";
 import {getCategories, getProducts} from "../../common/Apis.ts";
 
-export type categorieModelData = {
+export type categoriesModelData = {
   id: number;
   name: string;
 }
@@ -14,7 +14,7 @@ export type productsModelData = {
   category: string;
 }
 export type HomeRouteLoaderData = {
-  categories: categorieModelData[];
+  categories: categoriesModelData[];
   products: productsModelData[];
 }
 

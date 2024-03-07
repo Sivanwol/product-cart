@@ -1,0 +1,1 @@
+export const inter = import('@pmndrs/assets/fonts/inter_regular.woff')
