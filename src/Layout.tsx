@@ -1,5 +1,5 @@
-import {Center, Container, HStack, Spacer} from "@chakra-ui/react";
-import {Outlet} from "react-router-dom";
+import {Center, Container, HStack, Link, Spacer} from "@chakra-ui/react";
+import {Outlet, Link as ReactRouterLink} from "react-router-dom";
 
 function Layout() {
   return (<Container>
@@ -7,11 +7,11 @@ function Layout() {
       <h1>Shopping Selection</h1>
     </Center>
     <HStack>
-      <div>Quick Sale</div>
-      <div>Product List</div>
+      <div><Link color='teal.500' as={ReactRouterLink} to='/'>Product List</Link></div>
+      <div><Link color='teal.500' as={ReactRouterLink} to="/quick-sale">Quick Sale</Link></div>
     </HStack>
     <Spacer/>
-    <Outlet />
+    <Outlet/>
     <Spacer/>
     <footer>
       <Center>
