@@ -1,8 +1,8 @@
 import {productsModelData} from "../../providers/loaders/homeLoader.ts";
-import {vector3} from "../../common/types.ts";
+import {Vector3} from "@react-three/fiber";
 
 export type ProductsProps = {
   items: productsModelData[],
   categories: string[],
-  position: vector3
+  position: Vector3
 }

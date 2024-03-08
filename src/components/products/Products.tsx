@@ -6,7 +6,7 @@ import {Canvas, Vector3} from "@react-three/fiber";
 
 function Products(props: ProductsProps) {
   const {categories, items} = props;
-  if (props.items.length === 0) {
+  if (items.length === 0) {
     return (
       <Box>
         <p>No products found</p>

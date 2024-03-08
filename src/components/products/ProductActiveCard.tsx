@@ -1,6 +1,6 @@
 import {productsModelData} from "../../providers/loaders/homeLoader.ts";
 import {easing, geometry} from "maath";
-import {Euler, extend, useFrame, Vector3} from "@react-three/fiber";
+import {extend, useFrame} from "@react-three/fiber";
 import {Billboard, Image, Text} from "@react-three/drei";
 import {useLayoutEffect, useRef} from "react";
 import {suspend} from "suspend-react";
@@ -10,15 +10,13 @@ extend(geometry)
 type productActiveProps = {
   key: number;
   item: productsModelData;
-  position: Vector3;
-  rotation: Euler;
   hovered: number | null;
 }
 
 export default function ProductActiveCard(props: productActiveProps) {
   const {hovered, item} = props;
   const ref = useRef<any>()
-  const name = item.name
+  const {name} = item
   useLayoutEffect(() => void (ref.current.material.zoom = 0.8), [hovered])
   useFrame((_state, delta) => {
     easing.damp(ref.current.material, 'zoom', 1, 0.5, delta)

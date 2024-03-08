@@ -1,4 +1,3 @@
-import {vector3} from "../../common/types.ts";
 import {productsModelData} from "../../providers/loaders/homeLoader.ts";
 import {easing} from "maath";
 import {Euler, useFrame, Vector3} from "@react-three/fiber";
@@ -7,12 +6,13 @@ import {useRef} from "react";
 import * as THREE from 'three'
 
 type productProps = {
-  key: number;
   item: productsModelData;
   position: Vector3;
   rotation: Euler;
   active: boolean;
   hovered: boolean;
+  onPointerOver: (e: any) => void;
+  onPointerOut: (e: any) => void;
 }
 
 export default function ProductCard(props: productProps) {

@@ -2,17 +2,19 @@ import {extend, useFrame} from "@react-three/fiber";
 import {easing, geometry} from "maath";
 import {ProductsProps} from "./ProductsProps.ts";
 import {useScroll} from "@react-three/drei";
-import {useRef, useState} from "react";
+import {useRef} from "react";
+import ProductCards from "./ProductCards.tsx";
 
 extend(geometry)
 
 
 function BoardScene(props: ProductsProps) {
+  const {categories, position, items} = props;
   const ref = useRef<any>()
   const scroll = useScroll()
-  const [hovered, hover] = useState(null)
-
-  const [clicked, click] = useState(null)
+  // const [hovered, hover] = useState(null)
+  //
+  // const [clicked, click] = useState(null)
   useFrame((state, delta) => {
     if (ref && ref.current) {
       ref.current.rotation.y = -scroll.offset * (Math.PI * 2) // Rotate contents
@@ -26,6 +28,8 @@ function BoardScene(props: ProductsProps) {
   return (
     <group ref={ref} {...props}>
 
+      <ProductCards category={categories[0]} products={items} position={position} from={0} len={Math.PI * 2}
+                    radius={3}/>
     </group>
   )
 }
