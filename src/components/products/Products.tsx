@@ -15,13 +15,11 @@ function Products(props: ProductsProps) {
   }
   const position = [0, 1.5, 0] as Vector3;
   return (
-    <Box>
-      <Canvas dpr={[1, 1.5]}>
-        <ScrollControls pages={4} infinite>
-          <BoardScene items={items} categories={categories} position={position}/>
-        </ScrollControls>
-      </Canvas>
-    </Box>
+    <Canvas dpr={[1, 1.5]}>
+      <ScrollControls pages={4} infinite>
+        <BoardScene items={items} categories={categories} position={position}/>
+      </ScrollControls>
+    </Canvas>
   )
 }
 
