@@ -3,6 +3,7 @@ import {categoriesModelData, HomeRouteLoaderData, productsModelData} from "../pr
 import {useLoaderData} from "react-router-dom";
 import {buildProductsCard} from "../common/mockTools.ts";
 import Products from "../components/products/Products.tsx";
+import {Box} from "@chakra-ui/react";
 
 function Home() {
   const data = useLoaderData() as HomeRouteLoaderData;
@@ -22,9 +23,9 @@ function Home() {
     setCategories,
     data]);
 
-  return (<>
+  return (<Box h={500}>
       <Products position={[0, 1.5, 0]} items={products} categories={categories.map(c => c.name)}/>
-    </>
+    </Box>
   )
 }
 

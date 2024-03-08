@@ -28,8 +28,13 @@ function BoardScene(props: ProductsProps) {
   return (
     <group ref={ref} {...props}>
 
-      <ProductCards category={categories[0]} products={items} position={position} from={0} len={Math.PI * 2}
-                    radius={3}/>
+      {categories.map((category, index) => {
+        const from = (index / categories.length) * Math.PI * 2;
+        const len = Math.PI * 2 / categories.length;
+        return (<ProductCards category={category} products={items.filter(item => item.category !== category)}
+                              position={position} from={from} len={len}
+                              radius={4.25}/>);
+      })}
     </group>
   )
 }
