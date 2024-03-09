@@ -1,4 +1,3 @@
-import {productsModelData} from "../../providers/loaders/homeLoader.ts";
 import {easing, geometry} from "maath";
 import {extend, useFrame} from "@react-three/fiber";
 import {Billboard, Image, Text} from "@react-three/drei";
@@ -8,6 +7,7 @@ import {inter} from "../../common/constants.ts"
 
 extend(geometry)
 type productActiveProps = {
+  children: 0 | Element;
   key: string;
   name: string;
   image: string;
@@ -17,10 +17,11 @@ type productActiveProps = {
 
 export default function ProductActiveCard(props: productActiveProps) {
   const {hovered, name, image} = props;
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   const ref = useRef<any>()
   const [lastHovered, setLastHovered] = useState<number | null>(null);
   useLayoutEffect(() => {
-
     if (hovered !== null) {
       try {
         ref.current.material.zoom = 0.8;
@@ -46,18 +47,22 @@ export default function ProductActiveCard(props: productActiveProps) {
       }
     }
   })
-  return ((hovered !== null) && (hovered !== undefined)) && (
+  return <>
+    {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+    {/* @ts-ignore */}
     <Billboard {...props}>
       {hovered && (<>
+        {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
         {/* @ts-ignore */}
         <Text font={suspend(inter).default} fontSize={1.25} position={[-7.15, -5.85, 0]} anchorX="left" color="black">
           {`${name}\n${hovered}`}
         </Text>
         <Image ref={ref} transparent position={[0, 1.5, 0]} url={image}>
+          {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
           {/* @ts-ignore */}
           <roundedPlaneGeometry parameters={{width: 3.5, height: 1.618 * 3.5}} args={[3.5, 1.618 * 3.5, 0.2]}/>
         </Image>
       </>)}
     </Billboard>
-  )
+  </>
 }

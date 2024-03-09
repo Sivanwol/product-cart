@@ -24,7 +24,7 @@ function Home() {
     data]);
 
   return (<Box>
-      <Products position={[0, 1.5, 0]} items={products} categories={categories.map(c => c.name)}/>
+      <Products position={[0, 1.5, 0]} items={products} categories={categories.map(c => c.name)} children={0}/>
     </Box>
   )
 }

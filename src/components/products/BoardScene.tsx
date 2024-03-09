@@ -9,7 +9,7 @@ extend(geometry)
 
 
 function BoardScene(props: ProductsProps) {
-  const {categories, position, items} = props;
+  const {categories, items} = props;
   const ref = useRef<any>()
   const scroll = useScroll()
   // const [hovered, hover] = useState(null)
@@ -32,8 +32,8 @@ function BoardScene(props: ProductsProps) {
         const from = (index / categories.length) * Math.PI * 2;
         const len = Math.PI * 2 / categories.length;
         return (<ProductCards category={category} products={items.filter(item => item.category !== category)}
-                              position={position} from={from} len={len}
-                              radius={4.25}/>);
+                              from={from} len={len}
+                              radius={4.25} {...props}/>);
       })}
     </group>
   )

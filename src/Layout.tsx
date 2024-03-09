@@ -1,4 +1,4 @@
-import {Box, Center, Container, HStack, Link, Spacer} from "@chakra-ui/react";
+import {Box, Center, HStack, Link, Spacer} from "@chakra-ui/react";
 import {Outlet, Link as ReactRouterLink} from "react-router-dom";
 
 function Layout() {

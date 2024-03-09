@@ -18,7 +18,7 @@ function Products(props: ProductsProps) {
     <div style={{height: "50vh", width: "50vw"}}>
       <Canvas dpr={[1, 1.5]}>
         <ScrollControls pages={4} infinite>
-          <BoardScene items={items} categories={categories} position={position}/>
+          <BoardScene items={items} categories={categories} position={position} children={props.children}/>
         </ScrollControls>
       </Canvas>
     </div>
