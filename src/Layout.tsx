@@ -4,11 +4,11 @@ import {Outlet, Link as ReactRouterLink} from "react-router-dom";
 function Layout() {
   return (<Box>
     <Center>
-      <h1>Shopping Selection</h1>
+      <h1>Catalog Of Products</h1>
     </Center>
     <HStack>
-      <div><Link color='teal.500' as={ReactRouterLink} to='/'>Product List</Link></div>
-      <div><Link color='teal.500' as={ReactRouterLink} to="/quick-sale">Quick Sale</Link></div>
+      <Link color='teal.500' as={ReactRouterLink} to='/'>Product List</Link>
+      <Link color='teal.500' as={ReactRouterLink} to="/quick-sale">Quick Sale</Link>
     </HStack>
     <Spacer/>
     <Outlet/>
