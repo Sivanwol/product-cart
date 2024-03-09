@@ -1,8 +1,8 @@
-import {Center, Container, HStack, Link, Spacer} from "@chakra-ui/react";
+import {Box, Center, Container, HStack, Link, Spacer} from "@chakra-ui/react";
 import {Outlet, Link as ReactRouterLink} from "react-router-dom";
 
 function Layout() {
-  return (<Container>
+  return (<Box>
     <Center>
       <h1>Shopping Selection</h1>
     </Center>
@@ -20,7 +20,7 @@ function Layout() {
         </span>
       </Center>
     </footer>
-  </Container>)
+  </Box>)
 }
 
 export default Layout;

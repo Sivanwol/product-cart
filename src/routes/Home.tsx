@@ -23,7 +23,7 @@ function Home() {
     setCategories,
     data]);
 
-  return (<Box h={500}>
+  return (<Box>
       <Products position={[0, 1.5, 0]} items={products} categories={categories.map(c => c.name)}/>
     </Box>
   )
