@@ -20,12 +20,14 @@ type ProductCardProps = {
 function ProductCards(props: ProductCardProps) {
   const {category, products, position, from, len, radius} = props;
   const [hovered, hover] = useState<number | null>(null)
+  const [lastCategory, setLastCategory] = useState<string>('')
   // const [clicked, click] = useState(null)
   const amount = Math.round(len * 22)
   const textPosition = from + (amount / 2 / amount) * len
   const onPointerOverHandler = (e, index) => {
     e.stopPropagation();
     hover(index);
+    setLastCategory(category);
     console.log('pointer over', index, hovered, products[hovered])
   }
   const onPointerOutHandler = () => {
@@ -54,7 +56,8 @@ function ProductCards(props: ProductCardProps) {
         />);
       })}
       <ProductActiveCard hovered={hovered} image={products[hovered]?.image || ''} name={products[hovered]?.name || ''}
-                         key={-1}/>
+                         clear={lastCategory !== category}
+                         key="active"/>
     </group>
   )
 }

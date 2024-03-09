@@ -8,9 +8,10 @@ import {inter} from "../../common/constants.ts"
 
 extend(geometry)
 type productActiveProps = {
-  keyß: number;
+  key: string;
   name: string;
   image: string;
+  clear: boolean;
   hovered: number | null;
 }
 
@@ -19,21 +20,30 @@ export default function ProductActiveCard(props: productActiveProps) {
   const ref = useRef<any>()
   const [lastHovered, setLastHovered] = useState<number | null>(null);
   useLayoutEffect(() => {
+
     if (hovered !== null) {
-      ref.current.material.zoom = 0.8;
-      ref.current.material.opacity = 1;
+      try {
+        ref.current.material.zoom = 0.8;
+        ref.current.material.opacity = 1;
+      } catch (e) {
+        console.error(e)
+      }
     }
 
   }, [hovered])
   useFrame((_state, delta) => {
     if (hovered !== null) {
-      if (hovered !== lastHovered && lastHovered !== null) {
-        setLastHovered(hovered);
-        easing.damp(ref.current.material, 'zoom', 1, 0.5, delta)
-        easing.damp(ref.current.material, 'opacity', hovered !== null ? 0.0 : 1, 0.5, delta)
-        return;
+      try {
+        if (hovered !== lastHovered && lastHovered !== null) {
+          setLastHovered(hovered);
+          easing.damp(ref.current.material, 'zoom', 1, 0.5, delta)
+          easing.damp(ref.current.material, 'opacity', hovered !== null ? 0.0 : 1, 0.5, delta)
+          return;
+        }
+        ref.current.material.opacity = 1;
+      } catch (e) {
+        console.error(e)
       }
-      ref.current.material.opacity = 1;
     }
   })
   return ((hovered !== null) && (hovered !== undefined)) && (

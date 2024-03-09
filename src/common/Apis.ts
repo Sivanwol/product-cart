@@ -3,7 +3,7 @@ import axios from "axios";
 function axiosConfig() {
     return axios.create({
         baseURL: import.meta.env.VITE_API_URL,
-        timeout: 1000
+        timeout: 5000
     });
 }
 
